@@ -32,7 +32,8 @@ access(all) contract CarOwnership {
     }
 
     pub resource Collection : OwnershipCollectionPublic {
-        pub var ownedNFTs: @{UInt64: NFT}
+        //Arrays should be private (Cadence anti-pattern)
+        access(contract) var ownedNFTs: @{UInt64: NFT}
 
         pub fun getIDs(): [UInt64] {
             return self.ownedNFTs.keys
